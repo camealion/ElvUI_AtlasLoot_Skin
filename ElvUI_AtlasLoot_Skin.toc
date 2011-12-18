@@ -3,7 +3,7 @@
 ## Notes: Editless AtlasLoot Skin For ElvUI/Tukui
 ## Author: Camealion
 ## Version: 1.5
-## Dependencies: AtlasLoot
+## Dependencies: AtlasLoot, AtlasLoot_Cataclysm
 ## OptionalDeps: Tukui, ElvUI
 
 ElvUI_AtlasLoot_Skin.lua
