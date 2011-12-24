@@ -98,37 +98,6 @@ local function Compare_OnShow(self, event, ...)
 		cSkinScrollBar(AtlasLootCompareFrame_WishlistScrollFrameScrollBar)
 end
 
-local function OnEnter(Self)
-  GameTooltip:SetOwner(Self, "ANCHOR_CURSOR")
-  GameTooltip:AddLine("Left-Click: Toggle World Map", 1, 1, 1)
-  GameTooltip:AddLine("Right-Click: Toggle AtlasLoot", 1, 1, 1)
-  GameTooltip:Show()
-end
-
-local function OnLeave(Self)
-  GameTooltip:Hide()
-end
-
---[[ disabled for now
-
-local mToggleRight = _G["ElvUIMapToggle"]
-	if ElvUI then
-	mToggleRight:RegisterEvent("PLAYER_ENTERING_WORLD")
-	mToggleRight:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-	mToggleRight:SetScript("OnClick", function(self, btn)
-
-			if btn == "RightButton" then
-				if (AtlasLootDefaultFrame:IsVisible()) then
-					AtlasLootDefaultFrame:Hide()
-				else
-					AtlasLootDefaultFrame:Show()
-				end	
-			else
-				ToggleWorldMap()
-			end
-	end)
-end ]]
-
 local SkinAL = CreateFrame("Frame")
 	SkinAL:RegisterEvent("PLAYER_ENTERING_WORLD")
 	SkinAL:SetScript("OnEvent", function(self, event, addon)
@@ -250,11 +219,16 @@ local SkinAL = CreateFrame("Frame")
 		cSkinNextPrevButton(AtlasLootCompareFrameSearch_SelectModuel)		
 	
 	-- Skin Dropdown Boxes		
-		cSkinDropDownBox(AtlasLootDefaultFrame_ModuleSelect, 225)
-		cSkinDropDownBox(AtlasLootDefaultFrame_InstanceSelect, 225)
-		cSkinDropDownBox(AtlasLootCompareFrameSearch_StatsListDropDown,240)
-		cSkinDropDownBox(AtlasLootCompareFrame_WishlistDropDown,200)
-		
+		cSkinDropDownBox(AtlasLootDefaultFrame_ModuleSelect)
+			AtlasLootDefaultFrame_ModuleSelect:SetWidth(240)
+			AtlasLootDefaultFrame_ModuleSelect:SetPoint("TOPLEFT", AtlasLootDefaultFrame, "TOPLEFT", 50, -50)
+		cSkinDropDownBox(AtlasLootDefaultFrame_InstanceSelect)
+			AtlasLootDefaultFrame_InstanceSelect:SetWidth(240)
+		cSkinDropDownBox(AtlasLootCompareFrameSearch_StatsListDropDown)
+			AtlasLootCompareFrameSearch_StatsListDropDown:SetWidth(240)
+		cSkinDropDownBox(AtlasLootCompareFrame_WishlistDropDown)
+			AtlasLootCompareFrame_WishlistDropDown:SetWidth(240)
+
 	-- Skin Edit Boxes
 		cSkinEditBox(AtlasLootPanelSearch_Box)
 		cSkinEditBox(AtlasLootCompareFrameSearch_Box)
@@ -263,18 +237,10 @@ local SkinAL = CreateFrame("Frame")
 		cSkinCheckBox(AtlasLootFilterCheck)
 		cSkinCheckBox(AtlasLootItemsFrame_Heroic)
 		cSkinCheckBox(AtlasLootCompareFrameSearch_FilterCheck)
-	--end	
-	
-	-- Show tooltips
---[[ disabled for now
- 	if ElvUI then
-		local mToggleRight = _G["ElvUIMapToggle"]
-		mToggleRight:SetScript("OnEnter", OnEnter)
-		mToggleRight:SetScript("OnLeave", OnLeave)
-	end ]]
-	
+
 	local Frame = AtlasLootPanel
 	Frame.Titel:SetTextColor(23/255, 132/255, 209/255)
 	Frame.Titel:SetPoint("BOTTOM", Frame.TitelBg, "BOTTOM", 0, 40)
-	
+
+SkinAL:UnregisterEvent("PLAYER_ENTERING_WORLD") -- Unregister this event so we don't keep triggering it.
 end)
