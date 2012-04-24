@@ -237,6 +237,7 @@ local SkinAL = CreateFrame("Frame")
 		cSkinCheckBox(AtlasLootFilterCheck)
 		cSkinCheckBox(AtlasLootItemsFrame_Heroic)
 		cSkinCheckBox(AtlasLootCompareFrameSearch_FilterCheck)
+		cSkinCheckBox(AtlasLootItemsFrame_RaidFinder)
 
 	local Frame = AtlasLootPanel
 	Frame.Titel:SetTextColor(23/255, 132/255, 209/255)
