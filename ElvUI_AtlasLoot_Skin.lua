@@ -37,7 +37,11 @@
 	AtlasLootCompareFrameSearch_SelectModuel:Point("LEFT", AtlasLootCompareFrameSearch_SearchButton, "RIGHT", 5, 0)
 	AtlasLootDefaultFrame_CloseButton:ClearAllPoints()
 	AtlasLootDefaultFrame_CloseButton:SetPoint("TOPRIGHT",  AtlasLootDefaultFrame, "TOPRIGHT", -5 -2)
-	
+
+	-- Fix Strata bug just in case!  Thanks to Azilroka
+	AtlasLootDefaultFrame:SetFrameStrata("Medium")
+    AtlasLootItemsFrame:SetFrameStrata("High")
+
 	-- Set Sizes
 	local AL = ""
 		if AL == "" then
