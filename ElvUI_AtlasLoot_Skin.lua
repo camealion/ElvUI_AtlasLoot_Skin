@@ -42,6 +42,14 @@
 	AtlasLootDefaultFrame:SetFrameStrata("Medium")
     AtlasLootItemsFrame:SetFrameStrata("High")
 
+	for i = 1, 30 do
+		if _G["AtlasLootDefaultFrame_ScrollLine"..i] then _G["AtlasLootDefaultFrame_ScrollLine"..i]:SetFrameStrata("HIGH") end
+	end
+	AtlasLootDefaultFrame_ModuleSelect:SetFrameStrata("High")
+	AtlasLootDefaultFrame_InstanceSelect:SetFrameStrata("High")
+	AtlasLoot_AtlasInfoFrame_ToggleALButton:SetFrameStrata("High")
+	AtlasLootDefaultFrame_CompareFrame:SetFrameStrata("High")
+	
 	-- Set Sizes
 	local AL = ""
 		if AL == "" then
